@@ -1,4 +1,7 @@
+using FluentValidation;
 using ProductService.API.Mapping;
+using ProductService.Application.DTOs;
+using ProductService.Application.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 // AutoMapper configuration
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
+// Add FluentValidation
+builder.Services.AddScoped<IValidator<CreateShoeDto>, CreatShoeDtoValidator>();
 
 // Add Controlers 
 builder.Services.AddControllers();
