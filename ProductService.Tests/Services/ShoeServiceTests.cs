@@ -8,6 +8,7 @@ using Moq;
 using ProductService.API.Mapping;
 using ProductService.Application.Interfaces;
 using ProductService.Application.Services;
+using ProductService.Domain.Entities;
 
 namespace ProductService.Tests.Services
 {
@@ -23,6 +24,25 @@ namespace ProductService.Tests.Services
             _mapperMock = config.CreateMapper();
             _repoMock = new Mock<IShoeRepository>();
             _shoeService = new ShoeService(_repoMock.Object, _mapperMock);
+        }
+
+        [Fact]
+        public async Task GetAllAsync_ShouldReturnMappedList()
+        {
+            // Arrange
+            var shoes = new List<Shoe>
+                {
+                    new() { Id = Guid.NewGuid(), Name = "Air Max", Brand = "Nike", Price = 150, Quantity = 10 },
+                    new() { Id = Guid.NewGuid(), Name = "Ultraboost", Brand = "Adidas", Price = 180, Quantity = 5 }
+                };
+            _repoMock.Setup(repo => repo.GetAllAsync()).ReturnsAsync(shoes);
+            // Act
+            var result = await _shoeService.GetAllShoesAsync();
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count());
+            Assert.Contains(result, s => string.Compare(s.Name, "Air Max", StringComparison.OrdinalIgnoreCase ) == 0
+            && string.Compare(s.Brand, "Nike", StringComparison.OrdinalIgnoreCase) == 0);
         }
     }
 }
