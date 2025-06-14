@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Moq;
 using ProductService.API.Mapping;
 using ProductService.Application.Interfaces;
@@ -14,9 +9,9 @@ namespace ProductService.Tests.Services
 {
     public class ShoeServiceTests
     {
-        private readonly ShoeService _shoeService;
-        private readonly Mock<IShoeRepository> _repoMock;
         private readonly IMapper _mapperMock;
+        private readonly Mock<IShoeRepository> _repoMock;
+        private readonly ShoeService _shoeService;
 
         public ShoeServiceTests()
         {
@@ -41,7 +36,7 @@ namespace ProductService.Tests.Services
             // Assert
             Assert.NotNull(result);
             Assert.Equal(2, result.Count());
-            Assert.Contains(result, s => string.Compare(s.Name, "Air Max", StringComparison.OrdinalIgnoreCase ) == 0
+            Assert.Contains(result, s => string.Compare(s.Name, "Air Max", StringComparison.OrdinalIgnoreCase) == 0
             && string.Compare(s.Brand, "Nike", StringComparison.OrdinalIgnoreCase) == 0);
         }
     }
