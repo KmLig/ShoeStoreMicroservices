@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Moq;
 using ProductService.API.Mapping;
+using ProductService.Application.DTOs;
 using ProductService.Application.Interfaces;
 using ProductService.Application.Services;
 using ProductService.Domain.Entities;
@@ -52,6 +53,26 @@ namespace ProductService.Tests.Services
             Assert.NotNull(result);
             Assert.Equal(shoe.Id, result.Id);
             Assert.Equal(shoe.Name, result!.Name);
+        }
+
+        [Fact]
+        public async Task CreateShoeAsync_ShouldReturnCreatedShoeDto()
+        {
+            // Arrange
+            var newShoe = new Shoe { Id = Guid.NewGuid(), Name = "Air Max", Brand = "Nike", Price = 150, Quantity = 10 };
+            _repoMock.Setup(repo => repo.AddAsync(It.IsAny<Shoe>())).ReturnsAsync(newShoe);
+            // Act
+            var result = await _shoeService.CreateShoeAsync(new CreateShoeDto
+            {
+                Name = "Air Max",
+                Brand = "Nike",
+                Price = 150,
+                Quantity = 10
+            });
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(newShoe.Id, result.Id);
+            Assert.Equal(newShoe.Name, result.Name);
         }
     }
 }
