@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProductService.Application.DTOs
+﻿namespace ProductService.Application.DTOs
 {
     public class CreateShoeDto
     {
@@ -17,4 +11,4 @@ namespace ProductService.Application.DTOs
         public string Description { get; set; } = string.Empty;
     }
 }
-}
+
