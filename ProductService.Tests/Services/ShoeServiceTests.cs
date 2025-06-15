@@ -39,5 +39,19 @@ namespace ProductService.Tests.Services
             Assert.Contains(result, s => string.Compare(s.Name, "Air Max", StringComparison.OrdinalIgnoreCase) == 0
             && string.Compare(s.Brand, "Nike", StringComparison.OrdinalIgnoreCase) == 0);
         }
+
+        [Fact]
+        public async Task GetByIdAsync_ShouldReturnMappedShoe()
+        {
+            // Arrange
+            var shoe = new Shoe { Id = Guid.NewGuid(), Name = "Air Max", Brand = "Nike", Price = 150, Quantity = 10 };
+            _repoMock.Setup(repo => repo.GetByIdAsync(shoe.Id)).ReturnsAsync(shoe);
+            // Act
+            var result = await _shoeService.GetShoeByIdAsync(shoe.Id);
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(shoe.Id, result.Id);
+            Assert.Equal(shoe.Name, result!.Name);
+        }
     }
 }
