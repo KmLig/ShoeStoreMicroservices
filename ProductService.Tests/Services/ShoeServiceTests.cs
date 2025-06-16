@@ -74,5 +74,17 @@ namespace ProductService.Tests.Services
             Assert.Equal(newShoe.Id, result.Id);
             Assert.Equal(newShoe.Name, result.Name);
         }
+
+        [Fact]
+        public async Task UpdateShoeAsync_ShouldCallRepositoryUpdate()
+        {
+            // Arrange
+            var shoeId = Guid.NewGuid();
+            var shoeDto = new CreateShoeDto { Name = "Air Max", Brand = "Nike", Price = 150, Quantity = 10 };
+            // Act
+            await _shoeService.UpdateShoeAsync(shoeId, shoeDto);
+            // Assert
+            _repoMock.Verify(repo => repo.UpdateAsync(It.Is<Shoe>(s => s.Id == shoeId && s.Name == shoeDto.Name)), Times.Once);
+        }
     }
 }
