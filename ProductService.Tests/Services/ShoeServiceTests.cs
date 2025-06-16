@@ -86,5 +86,16 @@ namespace ProductService.Tests.Services
             // Assert
             _repoMock.Verify(repo => repo.UpdateAsync(It.Is<Shoe>(s => s.Id == shoeId && s.Name == shoeDto.Name)), Times.Once);
         }
+
+        [Fact]
+        public async Task DeleteShoeAsync_ShouldCallRepositoryDelete()
+        {
+            // Arrange
+            var shoeId = Guid.NewGuid();
+            // Act
+            await _shoeService.DeleteShoeAsync(shoeId);
+            // Assert
+            _repoMock.Verify(repo => repo.DeleteAsync(shoeId), Times.Once);
+        }
     }
 }
