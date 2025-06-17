@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService.Tests", "ProductService.Tests\ProductService.Tests.csproj", "{E338F0E6-5F94-4442-B4D5-BFDFE9D2C8FA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductService", "ProductService", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B967C40A-49F7-417F-9929-6A7FACB99503} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{8DF378D1-D95D-432C-BCB4-9D59A145E304} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{60615375-3A75-4AFB-B904-FD28A25EA5FE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{1FB4B4BB-DC9C-4638-998D-D268002A7773} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{E338F0E6-5F94-4442-B4D5-BFDFE9D2C8FA} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6F98679E-3B33-4341-A18E-4243257854CB}
