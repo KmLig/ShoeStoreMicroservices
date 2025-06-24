@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OrderService.Domain.Entities;
+﻿using OrderService.Domain.Entities;
 
 namespace OrderService.Application.Interfaces
 {
