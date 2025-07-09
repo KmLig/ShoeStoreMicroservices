@@ -1,6 +1,6 @@
 ﻿namespace OrderService.Application.DTOs
 {
-    internal class OrderDto
+    public class OrderDto
     {
         public Guid Id { get; set; }
         public DateTime OrderDate { get; set; }
