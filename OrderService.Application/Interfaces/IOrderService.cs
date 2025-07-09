@@ -1,13 +1,13 @@
-﻿using OrderService.Domain.Entities;
+﻿using OrderService.Application.DTOs;
 
 namespace OrderService.Application.Interfaces
 {
-    internal interface IOrderService
+    public interface IOrderService
     {
-        Task<Order?> GetByIdAsync(Guid id);
-        Task<IEnumerable<Order>> GetAllAsync();
-        Task<Order> AddAsync(Order order);
-        Task UpdateAsync(Order order);
+        Task<OrderDto?> GetByIdAsync(Guid id);
+        Task<IEnumerable<OrderDto>> GetAllAsync();
+        Task<OrderDto> CreateAsync(CreateOrderDto orderDto);
+        Task UpdateAsync(Guid id, CreateOrderDto orderDto);
         Task DeleteAsync(Guid id);
     }
 }
